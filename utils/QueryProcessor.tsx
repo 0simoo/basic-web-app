@@ -18,7 +18,8 @@ export default function QueryProcessor(query: string): string {
   }
   else if (query.toLowerCase().includes("numbers is the largest:")) {
     var nums = query.substring(46)
-    var splitted = nums.split(",").map(Number);
+    var numsNoQ = nums.slice(0, -1); 
+    var splitted = numsNoQ.split(",").map(Number);
     return (
       Math.max(Math.max(splitted[0],splitted[1]),splitted[2]).toString()
     );
