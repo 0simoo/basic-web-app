@@ -70,6 +70,26 @@ export default function QueryProcessor(query: string): string {
     var splitted = nums.split("to the power of").map(Number);
     return Math.pow(splitted[0],splitted[1]).toString()
   }
+  else if (query.toLowerCase().includes("primes")) {
+    var nums = query.substring(43).slice(0,-1)
+    var splitted = nums.split(",").map(Number);
+    
+    const isPrime = (num: number) => {
+      for(let i = 2, s = Math.sqrt(num); i <= s; i++) {
+          if(num % i === 0) return false;
+      }
+      return num > 1;
+  }
+    var res = ""
+    for(const n of splitted){
+      if(isPrime(n)){
+        res += n.toString() + ", "
+      }
+    }
+    return (
+      res.slice(0,-2)
+    );
+  }
 
 
   return "";
