@@ -47,7 +47,6 @@ export default function QueryProcessor(query: string): string {
     for(const n of splitted){
       if(Number.isInteger(Math.sqrt(n)) && Number.isInteger(Math.cbrt(n))){
         res += n.toString() + ", "
-        break;
       }
     }
     return (
