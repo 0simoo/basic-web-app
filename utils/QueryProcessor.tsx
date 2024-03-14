@@ -13,7 +13,12 @@ export default function QueryProcessor(query: string): string {
   }
   else if (query.toLowerCase().includes("name")) {
     return (
-      "Simon Shin"
+      "donghyus"
+    );
+  }
+  else if (query.toLowerCase().includes("")) {
+    return (
+      "Simon"
     );
   }
 
