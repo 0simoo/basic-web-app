@@ -40,6 +40,19 @@ export default function QueryProcessor(query: string): string {
       (splitted[0]*splitted[1]).toString()
     );
   }
+  else if (query.toLowerCase().includes("square and cube")) {
+    var nums = query.substring(60).slice(0,-1)
+    var splitted = nums.split(",").map(Number);
+    var res = ""
+    for(const n of splitted){
+      if(Number.isInteger(Math.sqrt(n) && Number.isInteger(Math.cbrt(n)))){
+        res = n.toString()
+      }
+    }
+    return (
+      res
+    );
+  }
 
   return "";
 }
