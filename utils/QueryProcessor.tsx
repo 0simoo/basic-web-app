@@ -24,12 +24,20 @@ export default function QueryProcessor(query: string): string {
       Math.max(Math.max(splitted[0],splitted[1]),splitted[2]).toString()
     );
   }
-  else if (query.toLowerCase().includes("What is")) {
+  else if (query.toLowerCase().includes("plus")) {
     var nums = query.substring(8)
     var numsNoQ = nums.slice(0, -1); 
     var splitted = numsNoQ.split(" plus ").map(Number);
     return (
       (splitted[0]+splitted[1]).toString()
+    );
+  }
+  else if (query.toLowerCase().includes("multiplied by")) {
+    var nums = query.substring(8)
+    var numsNoQ = nums.slice(0, -1); 
+    var splitted = numsNoQ.split(" multiplied by ").map(Number);
+    return (
+      (splitted[0]*splitted[1]).toString()
     );
   }
 
