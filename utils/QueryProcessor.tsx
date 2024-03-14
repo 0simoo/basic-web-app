@@ -20,6 +20,13 @@ export default function QueryProcessor(query: string): string {
     var nums = query.substring(46)
     var splitted = nums.split(",").map(Number);
     return (
+      Math.max(Math.max(splitted[0],splitted[1]),splitted[2]).toString()
+    );
+  }
+  else if (query.toLowerCase().includes("What is")) {
+    var nums = query.substring(8)
+    var splitted = nums.split(",").map(Number);
+    return (
       Math.max(Math.max(splitted[0],splitted[1]),splitted[2]) + ""
     );
   }
