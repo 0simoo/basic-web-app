@@ -28,8 +28,12 @@ export default function QueryProcessor(query: string): string {
     var nums = query.substring(8)
     var numsNoQ = nums.slice(0, -1); 
     var splitted = numsNoQ.split(" plus ").map(Number);
+    var sum = 0
+    for(const n of splitted){
+      sum += n
+    }
     return (
-      (splitted[0]+splitted[1]).toString()
+      sum.toString()
     );
   }
   else if (query.toLowerCase().includes("minus")) {
@@ -61,19 +65,12 @@ export default function QueryProcessor(query: string): string {
       res.slice(0,-2)
     );
   }
-  else if (query.toLowerCase().includes("primes")) {
-    var nums = query.substring(42).slice(0,-1)
-    var splitted = nums.split(",").map(Number);
-    var res = ""
-    for(const n of splitted){
-      if(Number.isInteger(Math.sqrt(n)) && Number.isInteger(Math.cbrt(n))){
-        res += n.toString() + ", "
-      }
-    }
-    return (
-      res.slice(0,-2)
-    );
+  else if (query.toLowerCase().includes("power of")) {
+    var nums = query.substring(8).slice(0,-1)
+    var splitted = nums.split("to the power of").map(Number);
+    return Math.pow(splitted[0],splitted[1]).toString()
   }
+
 
   return "";
 }
