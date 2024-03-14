@@ -16,9 +16,11 @@ export default function QueryProcessor(query: string): string {
       "Simon Shin"
     );
   }
-  else if (query.toLowerCase().includes("")) {
+  else if (query.toLowerCase().includes("numbers is the largest:")) {
+    var nums = query.substring(46)
+    var splitted = nums.split(",").map(Number);
     return (
-      "Simon"
+      Math.max(Math.max(splitted[0],splitted[1]),splitted[2]) + ""
     );
   }
 
