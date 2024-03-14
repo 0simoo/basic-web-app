@@ -32,6 +32,14 @@ export default function QueryProcessor(query: string): string {
       (splitted[0]+splitted[1]).toString()
     );
   }
+  else if (query.toLowerCase().includes("minus")) {
+    var nums = query.substring(8)
+    var numsNoQ = nums.slice(0, -1); 
+    var splitted = numsNoQ.split(" minus ").map(Number);
+    return (
+      (splitted[0]-splitted[1]).toString()
+    );
+  }
   else if (query.toLowerCase().includes("multiplied by")) {
     var nums = query.substring(8)
     var numsNoQ = nums.slice(0, -1); 
@@ -42,6 +50,19 @@ export default function QueryProcessor(query: string): string {
   }
   else if (query.toLowerCase().includes("square and cube")) {
     var nums = query.substring(60).slice(0,-1)
+    var splitted = nums.split(",").map(Number);
+    var res = ""
+    for(const n of splitted){
+      if(Number.isInteger(Math.sqrt(n)) && Number.isInteger(Math.cbrt(n))){
+        res += n.toString() + ", "
+      }
+    }
+    return (
+      res.slice(0,-2)
+    );
+  }
+  else if (query.toLowerCase().includes("primes")) {
+    var nums = query.substring(42).slice(0,-1)
     var splitted = nums.split(",").map(Number);
     var res = ""
     for(const n of splitted){
